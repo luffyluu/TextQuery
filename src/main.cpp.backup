@@ -1,0 +1,70 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <map>
+#include <set>
+#include <sstream>
+#include <algorithm>
+
+//#include "../include/utils.h"
+#include "utils.h"
+/*
+void runQueries(ifstream &infile){
+    TextQuery tq(infile); // save the file and create a map
+    while (true){
+        std::cout << "enter word to look for, or q to quit: ";
+        std::string s;
+        if (!(std::cin >> s) || s == "q") break;
+        // query(): search word and return result
+        print(std::cout, tq.query(s)) << endl; 
+
+    }
+}*/
+void runQueries(std::ifstream &infile){
+    // save to vector<string>
+    std::vector<std::string> lines;
+    std::string line;
+    while (std::getline(infile, line)){
+        lines.push_back(line);
+    } 
+    // create map of word to lines
+    std::map<std::string, std::set<size_t>> word_to_lines;
+    for(size_t i = 0; i < lines.size(); ++i){
+        std::istringstream iss(lines[i]);
+        std::string word;
+        while (iss >> word && !word.empty()){
+            word_to_lines[word].insert(i);
+        }
+        //std::cout << word_to_lines[word].size() << std::endl;
+    }
+    // find a word
+     
+    while (true){
+        std::cout << "enter word to look for, or q to quit: ";
+        std::string s;
+        if (!(std::cin >> s) || s == "q") break;
+        // query(): search word and return result
+        auto it = word_to_lines.find(s);
+        if(it != word_to_lines.end()){
+            std::cout << "\nWord '" << s << "' appears in these lines:\n";
+            for (size_t line_no : it->second){
+                std::cout << "Line " << line_no + 1 << ": "
+                        << lines[line_no] << std::endl;
+            }
+        }else{
+            std::cout << "Word '" << s << "' not found.\n";
+        }
+    }
+}
+int main(){
+    /*int x = 4, y = 3;
+    std::cout << "Add: " << MathUtils::add(x, y) << std::endl;
+    std::cout << "Multiply: " << MathUtils::multiply(x, y) << std::endl;*/
+    std::ifstream file("../test/the_old_man_and_the_sea.txt");
+    if (!file.is_open()){
+        std::cerr << "file open failed" << std::endl;
+    }
+    runQueries(file);
+    return 0;
+}

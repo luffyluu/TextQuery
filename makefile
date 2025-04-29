@@ -18,7 +18,7 @@ all: $(TARGET)
 
 # link and output
 $(TARGET): $(OBJS) 
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o build/$@
 # build .cpp to .o, % means all possible
 build/%.o: src/%.cpp
 	@mkdir -p build
