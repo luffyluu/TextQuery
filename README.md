@@ -1,17 +1,18 @@
-#This an empty readme file.
+# This an empty readme file.
 
 ## relation among the four files
 
-		textquery.h	queryresult.h	textquery.cpp	queryresult.cpp
-location	include/	include/	src/		src/
-ref.		->QR		(none)		->QR		(none)
-fwd_dcl		class QR;	(none)		(none)		(none)
-cpl_def		(none)		(none)		textquery.h	queryresult.h
-						queryresult.h
+|		|textquery.h	|queryresult.h	|textquery.cpp	|queryresult.cpp|
+|---------------|---------------|---------------|---------------|---------------|
+|location	|include/	|include/	|src/		|src/|
+|ref.		|->QR		|(none)		|->QR		|(none)|
+|fwd_dcl	|class QR;	|(none)		|(none)		|(none)|
+|cpl_def	|(none)		|(none)		|textquery.h	|queryresult.h|
+|		|		|		|queryresult.h	||
 ### notes
-QR = QueryResult
-fwd_dcl: forward declaration
-cpl_def: complete defination - such as #include queryresult.h or put ahead the code 
+- QR = QueryResult
+- fwd_dcl: forward declaration
+- cpl_def: complete defination - such as #include queryresult.h or put ahead the code 
 
 ### why
 - fwd_dcl vs cpl_def
