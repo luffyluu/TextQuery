@@ -1,0 +1,9 @@
+# files
+*.o
+
+# dirs
+build/
+
+# systerm files
+.DS_Store
+
