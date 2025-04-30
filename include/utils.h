@@ -12,3 +12,7 @@ inline std::string make_plural(size_t ctr, const std::string& word,
     return (ctr > 1) ? word + ending : word;
 }
 using line_no = std::vector<std::string>::size_type; 
+class Query;
+Query operator&(const Query &, const Query &);
+Query operator~(const Query &);
+Query operator|(const Query&, const Query&);

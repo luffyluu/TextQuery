@@ -26,7 +26,7 @@ build/%.o: src/%.cpp
 
 # run
 run: $(TARGET)
-	./$(TARGET)
+	cd build && ./$(TARGET) && cd ..
 clean:
 	rm -rf build $(TARGET)
 

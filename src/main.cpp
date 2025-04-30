@@ -10,6 +10,8 @@
 #include "utils.h"
 #include "textquery.h"
 #include "queryresult.h"
+#include "query.h"
+
 void runQueries(std::ifstream &infile){
     TextQuery tq(infile); 
     while (true){
@@ -19,14 +21,56 @@ void runQueries(std::ifstream &infile){
         print(std::cout, tq.query(s));
     }
 }
+void runQueries_test(std::ifstream &file){
+    TextQuery tq(file);
+    std::cout << "#######";
+    Query q = Query("he");
+    QueryResult result = q.eval(tq);
+    print(std::cout, result);  
+
+    std::cout << "#######";
+    q = Query("you");
+    result = q.eval(tq);
+    print(std::cout, result);  
+
+    std::cout << "#######";
+    q = Query("he") & Query("you");
+    result = q.eval(tq);
+    print(std::cout, result);
+
+    std::cout << "#######";
+    q = Query("he") | Query("you");
+    result = q.eval(tq);
+    print(std::cout, result);
+
+    std::cout << "#######";
+    q = ~Query("he") & Query("you");
+    result = q.eval(tq);
+    print(std::cout, result);
+    
+    std::cout << "#######";
+    q = ~Query("he") & Query("you") | Query("I");
+    result = q.eval(tq);
+    print(std::cout, result);
+}
+void runQueries_class(std::ifstream &file){
+    TextQuery tq(file);
+    while (true){
+        std::cout << "enter words to look for, or q to quit\n";
+        std::cout << "your word(s) should be seperate by & or precede by ~: ";
+        std::string s;
+        if(!(std::cin >> s) || s == "q") break;
+        Query q = ~Query("he");
+        QueryResult result = q.eval(tq);
+        print(std::cout, result);  
+    }
+}
 int main(){
-    /*int x = 4, y = 3;
-    std::cout << "Add: " << MathUtils::add(x, y) << std::endl;
-    std::cout << "Multiply: " << MathUtils::multiply(x, y) << std::endl;*/
     std::ifstream file("../test/the_old_man_and_the_sea.txt");
     if (!file.is_open()){
         std::cerr << "file open failed" << std::endl;
     }
-    runQueries(file);
+    //runQueries(file);
+    runQueries_test(file);
     return 0;
 }

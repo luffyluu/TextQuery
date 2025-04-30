@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <memory>
 #include "utils.h"
-//#include "queryresult.h"
+
 class QueryResult;
 class TextQuery{
 public:
