@@ -7,3 +7,5 @@ build/
 # systerm files
 .DS_Store
 
+# backup files
+*.backup
