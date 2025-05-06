@@ -15,7 +15,7 @@
 |PII	c09. Sequential Cont.	|X			|			|
 |PII	c10. Generic Algo.	|X			|			|
 |PII	c11. Associative Cont.	|			|			|
-|PII	c12. Dynamic Memory	|			|			|
+|PII	c12. Dynamic Memory	|X			|			|
 |Part III: Tools for Class Authors						|
 |PIII	c13. Copy Control	|X			|			|
 |PIII	c14. Overloaded Oper.	|			|			|
@@ -26,3 +26,18 @@
 |PIV	c18. Tools for Large P.	|			|			|
 |PIV	c19. Specialized Tools	|			|			|
 
+## stack vs heap
+- stack overflow 
+-- infinite recursion(turn to recursion)
+-- excessively large local variables(turn to heap for big data).
+- heap risks
+-- memory leak(call delete or turn to smart pointer)
+-- dangling pointer(turn to smart pointer, turn to value or avoid ref./pointer to local var.)
+-- double free(nullptr immediately after delete or turn to smart pointer)
+-- uninitialized Pointer(initialize to nullptr or valid address)
+-- memory fragmentation(turn to memory pool or std::vector)
+
+### why using stack
+- They don't know how many objects they'll need.
+- They don't know the precise type of the objects they need.
+- They want to share data between several objects.
