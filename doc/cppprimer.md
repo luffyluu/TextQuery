@@ -20,7 +20,7 @@
 |PIII	c13. Copy Control	|X			|			|
 |PIII	c14. Overloaded Oper.	|			|			|
 |PIII	c15. Object-Oriented P.	|X			|			|
-|PIII	c16. Templates and Gene.|			|			|
+|PIII	c16. Templates and Gene.|X			|			|
 |Part IV: Advanced Topics							|
 |PIV	c17. Specialized Lib.	|			|			|
 |PIV	c18. Tools for Large P.	|			|			|
@@ -41,3 +41,22 @@
 - They don't know how many objects they'll need.
 - They don't know the precise type of the objects they need.
 - They want to share data between several objects.
+
+## libraries to learn c++
+- STL
+- Folly, facebook, folly::fbvector, folly::Future
+- libuv, Event Loop, I/O
+- Intel TBB(Threading Building Blocks)
+- Eigen
+- boost.Math
+- SFML (Simple and Fast Multimedia Library), 2D game
+- bgfx, 3D Engin
+- boost.Asio, asyn-newwork
+- Abseil, google, absl::flat_hash_map
+- fmt, printf alternative
+- spdlog, high performance log
+- nlohmann/json, modern c++
+- Range-v3, modern c++
+- LLVM, compiler
+
+
